@@ -194,13 +194,11 @@ static int get_ifindex(int sockfd, const char *ifname)
 
 static void set_promisc(int sockfd, int ifindex)
 {
-    int rc;
     struct packet_mreq mr;
     memset(&mr, 0, sizeof(mr));
     mr.mr_ifindex = ifindex;
     mr.mr_type = PACKET_MR_PROMISC;
-    rc = setsockopt(sockfd, SOL_PACKET, PACKET_ADD_MEMBERSHIP, &mr, sizeof(mr));
-    exit_if(rc == -1);
+    (void)setsockopt(sockfd, SOL_PACKET, PACKET_ADD_MEMBERSHIP, &mr, sizeof(mr));
 }
 
 static void set_all_promisc(int sockfd)

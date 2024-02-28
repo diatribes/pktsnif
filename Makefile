@@ -1,4 +1,4 @@
-CC = gcc 
+CC = musl-gcc 
 #CFLAGS=-g -Wall -pedantic -std=c89 -DDEBUG=1
 CFLAGS=-O3 -Wall -pedantic -std=c89
 pktsnif: pktsnif.c clean
